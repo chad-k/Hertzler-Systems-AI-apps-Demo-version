@@ -92,7 +92,7 @@
       "customizations": [
         "Discuss your data connections, workflow, and reporting requirements with Hertzler. Scope and feasibility are assessed before any commitment."
       ],
-      "demo_url": "https://mislabel-detection.streamlit.app/",
+      "demo_url": "https://mislabel-detection.streamlit.app/",8
       "contact_url": "",
       "enabled": true,
       "approved": false,
@@ -199,7 +199,7 @@
       "approved": false,
       "contact_url": "",
       "name": "AI Database Health Assistant",
-      "demo_url": "https://ai-database-health-assistant.streamlit.app/",
+      "demo_url": "https://hertzler-database-health-new.streamlit.app/",
       "goals": [
         "database"
       ],
@@ -260,7 +260,7 @@
       "approved": false,
       "contact_url": "",
       "name": "Manufacturing Copilot",
-      "demo_url": "https://manufacturing-copilot.streamlit.app/",
+      "demo_url": "https://hertzler-manufacturing-copilot-new.streamlit.app/",
       "goals": [
         "dashboard"
       ],
