@@ -1,0 +1,62 @@
+[
+  {
+    "app_id": "predictive_spc",
+    "source": "upload/predictive_spc.py",
+    "entrypoint": "apps/predictive_spc/app.py",
+    "demo_url": "https://predictive-spc.streamlit.app/"
+  },
+  {
+    "app_id": "batch_anomaly",
+    "source": "latest_sources/app(2).py",
+    "entrypoint": "apps/batch_anomaly/app.py",
+    "demo_url": "https://batch-defect-prediction.streamlit.app/"
+  },
+  {
+    "app_id": "mislabel",
+    "source": "upload/mislabel_detection_dashboard_export.py",
+    "entrypoint": "apps/mislabel/app.py",
+    "demo_url": "https://mislabel-detection.streamlit.app/"
+  },
+  {
+    "app_id": "spc_interpretation",
+    "source": "upload/spc_auto_interpret_demov2.py",
+    "entrypoint": "apps/spc_interpretation/app.py",
+    "demo_url": "https://spc-auto-interpretation.streamlit.app/"
+  },
+  {
+    "app_id": "entry_integrity",
+    "source": "upload/data_int_check.py",
+    "entrypoint": "apps/entry_integrity/app.py",
+    "demo_url": "https://operator-data-integrity-checker.streamlit.app/"
+  },
+  {
+    "app_id": "database_health",
+    "source": "upload/ai_database_health_assistant(1).py",
+    "entrypoint": "apps/database_health/app.py",
+    "demo_url": "https://ai-database-health-assistant.streamlit.app/"
+  },
+  {
+    "app_id": "coa",
+    "source": "upload/coa_generator_app(1).py",
+    "entrypoint": "apps/coa/app.py",
+    "demo_url": "https://coa-generator.streamlit.app/"
+  },
+  {
+    "app_id": "copilot",
+    "source": "upload/manufacturing_copilot(1)(1).py",
+    "entrypoint": "apps/copilot/app.py",
+    "demo_url": "https://manufacturing-copilot.streamlit.app/"
+  },
+  {
+    "app_id": "optimization",
+    "source": "latest_sources/process_optimization_app.py",
+    "entrypoint": "apps/optimization/app.py",
+    "demo_url": "https://process-optimization.streamlit.app/"
+  },
+  {
+    "app_id": "inspection_frequency",
+    "source": "upload/inspection_frequency_app.py",
+    "entrypoint": "apps/inspection_frequency/app.py",
+    "demo_url": "https://smart-inspection-frequency.streamlit.app/"
+  }
+]
