@@ -1,7 +1,7 @@
 from pathlib import Path
 import runpy
 import streamlit as st
-from common.contact import render_contact
+#from common.contact import render_contact
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -21,7 +21,21 @@ def run_demo(source, app_id, app_name):
         runpy.run_path(str(source), run_name='__main__')
     except DemoStopped:
         pass
-    render_contact(app_id, app_name)
+    #render_contact(app_id, app_name)
+
+    st.divider()
+    st.header("Interested in this app for your process?")
+    st.write(
+        f"Contact Hertzler Systems to discuss customizing {app_name} "
+        "for your process."
+    )
+    st.link_button(
+        "Contact Hertzler Systems",
+        "https://www.hertzler.com/contact-us",
+        type="primary",
+        use_container_width=True,
+    )
+    
     st.divider()
     st.markdown("**Powered by Hertzler Systems**")
     st.image(str(ROOT / "assets" / "hertzler_logo.png"), width=360)
