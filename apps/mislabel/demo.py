@@ -290,7 +290,7 @@ if "analysis_complete" not in st.session_state:
     st.session_state.mislabeling_suggestions = {}
 
 # ===== DATA LOADING =====
-st.sidebar.header("Data Source")
+#st.sidebar.header("Data Source")
 data_source = 'Demo Data'  # Demo-only deployment
 
 df = generate_demo_data()
