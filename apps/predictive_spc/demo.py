@@ -168,10 +168,10 @@ These add-ons build on top of the existing predictive SPC and feature relationsh
 """
     )
 
-st.sidebar.info(
-    "**Questions or Issues?**\n\n"
-    "📧 Contact: [chad@hertzler.com](mailto:chad@hertzler.com)"
-)
+#st.sidebar.info(
+#    "**Questions or Issues?**\n\n"
+#    "📧 Contact: [chad@hertzler.com](mailto:chad@hertzler.com)"
+#)
 
 
 # -----------------------------------------------------------------------------
