@@ -83,7 +83,7 @@ def render_contact(app_id, app_name):
     import streamlit as st
     st.divider()
     st.header('Interested in this app for your process?')
-    st.write('Tell Chad what you would like to improve or customize. Your message will include the name of this demo.')
+    st.write('Tell Hertzler Systems what you would like to improve or customize. Your message will include the name of this demo.')
     try:
         config = dict(st.secrets.get('email', {}))
     except (FileNotFoundError, KeyError):
@@ -93,7 +93,7 @@ def render_contact(app_id, app_name):
         st.info('The contact form is not accepting messages yet. You can email chad@hertzler.com directly.')
     key = 'contact_' + app_id
     if st.session_state.get(key + '_sent'):
-        st.success('Your inquiry was accepted by the email service for delivery to Chad. Thank you!')
+        st.success('Your inquiry was accepted by the email service for delivery to Hertzler Systems. Thank you!')
     st.write('**App:** ' + app_name)
     st.caption('The app name is automatically included in the email subject and message.')
     with st.form(key + '_form', clear_on_submit=False):
@@ -103,7 +103,7 @@ def render_contact(app_id, app_name):
         message = st.text_area('What would you like to discuss?', max_chars=5000,
                                placeholder='Describe your process, the problem, and what you would like the app to do.', key=key + '_message')
         st.caption('Send message emails these contact details and your request to chad@hertzler.com. No demo results are attached.')
-        submitted = st.form_submit_button('Send message to Chad', disabled=not ready, type='primary')
+        submitted = st.form_submit_button('Send message to Hertzler Systems', disabled=not ready, type='primary')
     if not submitted:
         return
     name, email, company, message = [s.strip() for s in (name, email, company, message)]
@@ -130,4 +130,4 @@ def render_contact(app_id, app_name):
     st.session_state[key + '_fingerprint'] = fingerprint
     st.session_state[key + '_sent'] = True
     st.session_state['contact_last_sent_at'] = time.time()
-    st.success('Your inquiry was accepted by the email service for delivery to Chad. Thank you!')
+    st.success('Your inquiry was accepted by the email service for delivery to Hertzler Systems. Thank you!')
