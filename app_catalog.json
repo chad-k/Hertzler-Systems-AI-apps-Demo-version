@@ -25,7 +25,7 @@
       "customizations": [
         "Discuss your data connections, workflow, and reporting requirements with Hertzler. Scope and feasibility are assessed before any commitment."
       ],
-      "demo_url": "https://predictive-spc.streamlit.app/",
+      "demo_url": "https://hertzler-predictive-spc.streamlit.app/",
       "contact_url": "",
       "enabled": true,
       "approved": false,
@@ -155,7 +155,7 @@
       "customizations": [
         "Discuss your data connections, workflow, and reporting requirements with Hertzler. Scope and feasibility are assessed before any commitment."
       ],
-      "demo_url": "https://spc-auto-interpretation.streamlit.app/",
+      "demo_url": "https://hertzler-spc-interpretation.streamlit.app/",
       "contact_url": "",
       "enabled": true,
       "approved": false,
