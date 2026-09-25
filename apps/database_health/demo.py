@@ -1541,10 +1541,12 @@ with tabs[7]:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
-    question = st.chat_input(
-        "Ask about SQL Server health..."
-    , help='Ask about supported topics such as storage, indexes, blocking, backups, or query performance. Answers use demo diagnostics.')
+        st.caption(
+        "Ask about storage, indexes, blocking, backups, or query performance. "
+        "Answers use demo diagnostics."
+    )
 
+    question = st.chat_input("Ask about SQL Server health...")
     if question:
 
         st.session_state.db_health_messages.append({
