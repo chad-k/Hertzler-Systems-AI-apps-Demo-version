@@ -290,7 +290,7 @@
       "approved": false,
       "contact_url": "",
       "name": "Process Optimization",
-      "demo_url": "https://process-optimization.streamlit.app/",
+      "demo_url": "https://hertzler-process-optimization.streamlit.app/",
       "goals": [
         "optimize"
       ],
