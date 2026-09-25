@@ -125,7 +125,7 @@
       "customizations": [
         "Discuss customer-specific grouping, data connections, reports and interval rules with Hertzler; scope and feasibility require assessment."
       ],
-      "demo_url": "https://smart-inspection-frequency.streamlit.app/",
+      "demo_url": "https://hertzler-inspection-frequency.streamlit.app/",
       "contact_url": "",
       "enabled": true,
       "approved": false,
@@ -185,7 +185,7 @@
       "customizations": [
         "Discuss your data connections, workflow, and reporting requirements with Hertzler. Scope and feasibility are assessed before any commitment."
       ],
-      "demo_url": "https://operator-data-integrity-checker.streamlit.app/",
+      "demo_url": "https://hertzler-data-integrity.streamlit.app/",
       "contact_url": "",
       "enabled": true,
       "approved": false,
