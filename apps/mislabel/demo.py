@@ -23,10 +23,10 @@ render_guide('mislabel')
 
 # ===== CONTACT INFO =====
 st.sidebar.divider()
-st.sidebar.info(
-    "**Questions or Issues?**\n\n"
-    "📧 Contact: [chad@hertzler.com](mailto:chad@hertzler.com)"
-)
+#st.sidebar.info(
+#    "**Questions or Issues?**\n\n"
+#    "📧 Contact: [chad@hertzler.com](mailto:chad@hertzler.com)"
+#)
 st.sidebar.divider()
 
 # ===== HELP SECTION =====
