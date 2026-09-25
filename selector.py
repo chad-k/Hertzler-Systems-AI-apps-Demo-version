@@ -14,8 +14,8 @@ except (ValueError, OSError, TypeError, KeyError) as exc:
 st.markdown('<span style="color:#087f8c;font-weight:700;letter-spacing:2px">HERTZLER SYSTEMS</span>', unsafe_allow_html=True)
 st.title('Find your AI quality solution')
 st.write('Tell us what you want to improve. Explore a free demo, then talk with Hertzler about making it fit your process.')
-if catalog['preview_mode']:
-    st.warning('Preview — all ten app descriptions and demo links are configured, along with the Hertzler contact page.')
+#if catalog['preview_mode']:
+#    st.warning('Preview — all ten app descriptions and demo links are configured, along with the Hertzler contact page.')
 st.caption('Guided recommendations based on your selections. No AI model is used by this finder.')
 
 s = st.session_state
