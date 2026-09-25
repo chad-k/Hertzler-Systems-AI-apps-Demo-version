@@ -72,7 +72,7 @@ def app_card(app, prefix):
 
 find_tab, text_tab, browse_tab, help_tab = st.tabs(['Find my solution', 'Describe my problem', 'Explore all apps', 'How it works'])
 with find_tab:
-    st.progress(min(s.step, 3) / 3)
+    st.progress(min(s.step, 2) / 2)
     if s.step == 0:
         st.subheader('1 · What would you like to improve?')
         options = list(GOALS)
@@ -92,20 +92,12 @@ with find_tab:
             s.answers['scope'] = 'unsure'
             s.step = 2
             st.rerun()
-    elif s.step == 2:
-        st.subheader(data_question(s.answers['goal']))
-        st.caption('You can explore the demos before deciding whether to customize an app.')
-        options = list(DATA)
-        selected = st.radio('Your data today', options, index=options.index(s.answers.get('data', 'unsure')), format_func=(lambda x: {'yes': 'Yes', 'no': 'No', 'unsure': 'I am not sure'}[x]) if s.answers['goal'] == 'database' else DATA.get, key='data_pick')
-        if st.button('Show my options →', type='primary', key='next_data'):
-            advance('data', selected)
     else:
         goal = s.answers['goal']
         scope = s.answers.get('scope', 'unsure')
         matches = recommend(catalog, goal, scope)
         st.subheader('Options for your process')
         st.caption('Your goal: ' + GOALS[goal])
-        st.info(readiness_message(goal, s.answers['data']))
         if matches:
             if len(matches) > 1:
                 st.write('More than one app may fit. Compare their purposes and data requirements below.')
@@ -114,13 +106,13 @@ with find_tab:
         else:
             st.info('We do not have a confirmed catalog match for this selection. Explore the apps or contact Hertzler to discuss your requirement.')
             contact_button(key='no_match_contact')
-        summary = '\n'.join(['Hertzler AI Solution Finder', 'Goal: ' + GOALS[goal], 'Scope: ' + SCOPES[scope], 'Readiness question: ' + data_question(goal), 'Answer: ' + s.answers['data'], 'Apps to discuss: ' + (', '.join(a['name'] for a in matches) or 'Custom consultation'), '', 'Customization needs: '])
+        summary = '\n'.join(['Hertzler AI Solution Finder', 'Goal: ' + GOALS[goal], 'Scope: ' + SCOPES[scope], 'Apps to discuss: ' + (', '.join(a['name'] for a in matches) or 'Custom consultation'), '', 'Customization needs: '])
         st.download_button('Download my discussion summary', summary, file_name='hertzler_discussion_summary.txt', mime='text/plain')
         st.caption('No inquiry has been sent. Use the contact link to submit a request to Hertzler.')
     c1, c2 = st.columns(2)
     with c1:
         if s.step > 0 and st.button('← Back', key='back'):
-            s.step = 0 if s.step == 2 and s.answers.get('goal') != 'unusual' else max(0, s.step - 1)
+            s.step = (1 if s.answers.get('goal') == 'unusual' else 0) if s.step >= 2 else 0
             st.rerun()
     with c2:
         st.button('Start over', on_click=reset, key='restart')
