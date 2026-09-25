@@ -155,7 +155,7 @@ with text_tab:
                 contact_button(key='text_no_match_contact')
                 focus = st.selectbox('Choose a goal to clarify your request', list(GOALS),
                                      format_func=GOALS.get, index=None, placeholder='Select a goal', key='text_focus')
-                                if st.button(
+                if st.button(
                     'Show matching apps',
                     disabled=focus is None,
                     key='text_use_goal'
