@@ -155,12 +155,22 @@ with text_tab:
                 contact_button(key='text_no_match_contact')
                 focus = st.selectbox('Choose a goal to clarify your request', list(GOALS),
                                      format_func=GOALS.get, index=None, placeholder='Select a goal', key='text_focus')
-                if st.button('Use this goal in the guided questions', disabled=focus is None, key='text_use_goal'):
-                    reset()
-                    s.answers['goal'] = focus
-                    s.step = 1
-                    s['text_handoff'] = True
-                    st.rerun()
+                                if st.button(
+                    'Show matching apps',
+                    disabled=focus is None,
+                    key='text_use_goal'
+                ):
+                    goal_matches = recommend(catalog, focus, 'unsure')
+
+                    if goal_matches:
+                        st.subheader('Apps matching your goal')
+                        for app in goal_matches:
+                            app_card(app, 'goal_match_')
+                    else:
+                        st.info(
+                            'No available apps match this goal. '
+                            'Explore all apps or contact Hertzler.'
+                        )
             text_summary = '\n'.join(['Hertzler AI Solution Finder', 'Customer request: ' + query,
                                       'Apps to discuss: ' + (', '.join(m['app']['name'] for m in text_matches) or 'Custom consultation'),
                                       '', 'Customization needs: '])
