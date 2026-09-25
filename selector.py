@@ -70,7 +70,9 @@ def app_card(app, prefix):
         with right:
             contact_button(app, prefix + app['id'] + '_contact')
 
-find_tab, text_tab, browse_tab, help_tab = st.tabs(['Find my solution', 'Describe my problem', 'Explore all apps', 'How it works'])
+# Original tab list — restore this line to re-enable Describe my problem.
+# find_tab, text_tab, browse_tab, help_tab = st.tabs(['Find my solution', 'Describe my problem', 'Explore all apps', 'How it works'])
+find_tab, browse_tab, help_tab = st.tabs(['Find my solution', 'Explore all apps', 'How it works'])
 with find_tab:
     st.progress(min(s.step, 2) / 2)
     if s.step == 0:
@@ -116,67 +118,68 @@ with find_tab:
             st.rerun()
     with c2:
         st.button('Start over', on_click=reset, key='restart')
-with text_tab:
-    if s.get('text_handoff'):
-        st.success('Your goal is selected. Open Find my solution to continue the guided questions.')
-    st.subheader('What would you like help with?')
-    st.write('Describe your goal, or name an app you want to explore.')
-    st.caption('Examples: How often should we inspect? • Our SQL Server is slow • Find unusual batches • Generate a certificate of analysis')
-    with st.form('problem_form'):
-        problem = st.text_area('Your problem or goal', max_chars=2000,
-                               placeholder='We want to find unusual batches and reduce repeated operator entries.',
-                               key='problem_input')
-        submitted = st.form_submit_button('Find matching apps', type='primary')
-    if submitted:
-        s.pop('text_handoff', None)
-        s['submitted_problem'] = problem.strip()
-    if 'submitted_problem' in s:
-        query = s['submitted_problem']
-        if not query:
-            st.info('Enter a problem or goal, or use the guided questions in Find my solution.')
-        else:
-            st.markdown('**Your submitted request**')
-            st.text(query)
-            analysis = analyze_customer_request(catalog, query)
-            text_matches = analysis['matches']
-            if analysis['corrections']:
-                st.caption('Interpreted spelling: ' + '; '.join(a + ' → ' + b for a, b in analysis['corrections'].items()))
-            if analysis['followup']:
-                st.info(analysis['followup'])
-            st.caption('Matches use app names, synonyms, related terms, and common spelling corrections. These are options to explore; unfamiliar or complex requests may need clarification.')
-            if text_matches:
-                if len(text_matches) > 1:
-                    st.info('Several apps match your wording. Compare the options below, or use the guided questions to narrow your goal.')
-                for match in text_matches:
-                    st.write('Recognized terms: ' + ', '.join(match['matched_phrases']))
-                    app_card(match['app'], 'text_')
-            else:
-                st.info('No clear match found. Try a more specific description, use Find my solution, or contact Hertzler about your requirement.')
-                contact_button(key='text_no_match_contact')
-                focus = st.selectbox('Choose a goal to clarify your request', list(GOALS),
-                                     format_func=GOALS.get, index=None, placeholder='Select a goal', key='text_focus')
-                if st.button(
-                    'Show matching apps',
-                    disabled=focus is None,
-                    key='text_use_goal'
-                ):
-                    goal_matches = recommend(catalog, focus, 'unsure')
-
-                    if goal_matches:
-                        st.subheader('Apps matching your goal')
-                        for app in goal_matches:
-                            app_card(app, 'goal_match_')
-                    else:
-                        st.info(
-                            'No available apps match this goal. '
-                            'Explore all apps or contact Hertzler.'
-                        )
-            text_summary = '\n'.join(['Hertzler AI Solution Finder', 'Customer request: ' + query,
-                                      'Apps to discuss: ' + (', '.join(m['app']['name'] for m in text_matches) or 'Custom consultation'),
-                                      '', 'Customization needs: '])
-            st.download_button('Download this request summary', text_summary,
-                               file_name='hertzler_request_summary.txt', mime='text/plain', key='text_summary')
-            st.caption('No inquiry has been sent. Open the contact page when you want to submit a request.')
+# Describe my problem is temporarily disabled. Uncomment this block to restore it.
+# with text_tab:
+#     if s.get('text_handoff'):
+#         st.success('Your goal is selected. Open Find my solution to continue the guided questions.')
+#     st.subheader('What would you like help with?')
+#     st.write('Describe your goal, or name an app you want to explore.')
+#     st.caption('Examples: How often should we inspect? • Our SQL Server is slow • Find unusual batches • Generate a certificate of analysis')
+#     with st.form('problem_form'):
+#         problem = st.text_area('Your problem or goal', max_chars=2000,
+#                                placeholder='We want to find unusual batches and reduce repeated operator entries.',
+#                                key='problem_input')
+#         submitted = st.form_submit_button('Find matching apps', type='primary')
+#     if submitted:
+#         s.pop('text_handoff', None)
+#         s['submitted_problem'] = problem.strip()
+#     if 'submitted_problem' in s:
+#         query = s['submitted_problem']
+#         if not query:
+#             st.info('Enter a problem or goal, or use the guided questions in Find my solution.')
+#         else:
+#             st.markdown('**Your submitted request**')
+#             st.text(query)
+#             analysis = analyze_customer_request(catalog, query)
+#             text_matches = analysis['matches']
+#             if analysis['corrections']:
+#                 st.caption('Interpreted spelling: ' + '; '.join(a + ' → ' + b for a, b in analysis['corrections'].items()))
+#             if analysis['followup']:
+#                 st.info(analysis['followup'])
+#             st.caption('Matches use app names, synonyms, related terms, and common spelling corrections. These are options to explore; unfamiliar or complex requests may need clarification.')
+#             if text_matches:
+#                 if len(text_matches) > 1:
+#                     st.info('Several apps match your wording. Compare the options below, or use the guided questions to narrow your goal.')
+#                 for match in text_matches:
+#                     st.write('Recognized terms: ' + ', '.join(match['matched_phrases']))
+#                     app_card(match['app'], 'text_')
+#             else:
+#                 st.info('No clear match found. Try a more specific description, use Find my solution, or contact Hertzler about your requirement.')
+#                 contact_button(key='text_no_match_contact')
+#                 focus = st.selectbox('Choose a goal to clarify your request', list(GOALS),
+#                                      format_func=GOALS.get, index=None, placeholder='Select a goal', key='text_focus')
+#                 if st.button(
+#                     'Show matching apps',
+#                     disabled=focus is None,
+#                     key='text_use_goal'
+#                 ):
+#                     goal_matches = recommend(catalog, focus, 'unsure')
+#
+#                     if goal_matches:
+#                         st.subheader('Apps matching your goal')
+#                         for app in goal_matches:
+#                             app_card(app, 'goal_match_')
+#                     else:
+#                         st.info(
+#                             'No available apps match this goal. '
+#                             'Explore all apps or contact Hertzler.'
+#                         )
+#             text_summary = '\n'.join(['Hertzler AI Solution Finder', 'Customer request: ' + query,
+#                                       'Apps to discuss: ' + (', '.join(m['app']['name'] for m in text_matches) or 'Custom consultation'),
+#                                       '', 'Customization needs: '])
+#             st.download_button('Download this request summary', text_summary,
+#                                file_name='hertzler_request_summary.txt', mime='text/plain', key='text_summary')
+#             st.caption('No inquiry has been sent. Open the contact page when you want to submit a request.')
 with browse_tab:
     apps = visible_apps(catalog)
     if not apps:
