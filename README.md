@@ -1,4 +1,5 @@
 # Hertzler demo suite
+# Have a look - https://hertzler-systems-ai-apps-demo-version-092026.streamlit.app/
 
 One GitHub repository containing the AI Solution Finder and ten standalone Streamlit demonstration apps. All analysis uses bundled or generated synthetic data. There are no file-upload widgets or live database connection controls. Existing analysis settings, charts, exports, and selector workflows are retained. Each demo has a detailed beginner guide at the top and an inquiry form at the end.
 
